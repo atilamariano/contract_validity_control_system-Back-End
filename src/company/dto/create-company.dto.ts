@@ -63,7 +63,7 @@ export class CreateCompanyDto extends Company {
   @IsEnum(EnumStatus)
   @IsNotEmpty()
   @ApiProperty({
-    example: 'ATIVA',
+    example: 'ACTIVE',
     description: 'Status da empresa',
   })
   status: EnumStatus;

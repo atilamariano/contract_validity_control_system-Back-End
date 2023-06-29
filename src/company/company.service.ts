@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class CompanyService {
+  constructor(private prisma: PrismaService) {}
+
   async create(createCompanyDto: CreateCompanyDto) {
     const {
       code,
@@ -20,7 +20,7 @@ export class CompanyService {
       municipalRegistration,
     } = createCompanyDto;
 
-    return prisma.company.create({
+    const company = await this.prisma.company.create({
       data: {
         code,
         cnpj,
@@ -28,19 +28,21 @@ export class CompanyService {
         contactPerson,
         contactPhone,
         contactEmail,
-        inclusionDate,
+        inclusionDate: new Date(inclusionDate),
         status,
         municipalRegistration,
       },
     });
+
+    return company;
   }
 
   async findAll() {
-    return prisma.company.findMany();
+    return this.prisma.company.findMany();
   }
 
   async findOne(id: number) {
-    return prisma.company.findUnique({
+    return this.prisma.company.findUnique({
       where: {
         id,
       },
@@ -60,7 +62,7 @@ export class CompanyService {
       municipalRegistration,
     } = updateCompanyDto;
 
-    return prisma.company.update({
+    return this.prisma.company.update({
       where: {
         id,
       },
@@ -79,7 +81,7 @@ export class CompanyService {
   }
 
   async remove(id: number) {
-    return prisma.company.delete({
+    return this.prisma.company.delete({
       where: {
         id,
       },
