@@ -6,6 +6,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Company {
+  id                    Int        @id @default(autoincrement())
+  code                  String     @unique
+  cnpj                  String     @unique
+  businessName          String
+  contactPerson         String
+  contactPhone          String
+  contactEmail          String
+  inclusionDate         DateTime   @default(now())
+  status                EnumStatus
+  municipalRegistration String
+
+  @@map(name: "companies")
+}
+
+enum EnumStatus {
+  ACTIVE
+  INATIVE
 }
