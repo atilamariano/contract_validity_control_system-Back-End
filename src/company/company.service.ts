@@ -15,7 +15,6 @@ export class CompanyService {
       contactPerson,
       contactPhone,
       contactEmail,
-      inclusionDate,
       status,
       municipalRegistration,
     } = createCompanyDto;
@@ -28,7 +27,6 @@ export class CompanyService {
         contactPerson,
         contactPhone,
         contactEmail,
-        inclusionDate: new Date(inclusionDate),
         status,
         municipalRegistration,
       },
@@ -57,7 +55,6 @@ export class CompanyService {
       contactPerson,
       contactPhone,
       contactEmail,
-      inclusionDate,
       status,
       municipalRegistration,
     } = updateCompanyDto;
@@ -73,7 +70,6 @@ export class CompanyService {
         contactPerson,
         contactPhone,
         contactEmail,
-        inclusionDate,
         status,
         municipalRegistration,
       },

@@ -52,14 +52,6 @@ export class CreateCompanyDto extends Company {
   })
   contactEmail: string;
 
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty({
-    example: '2023-06-28',
-    description: 'Data de inclusão da empresa',
-  })
-  inclusionDate: string;
-
   @IsEnum(EnumStatus)
   @IsNotEmpty()
   @ApiProperty({
