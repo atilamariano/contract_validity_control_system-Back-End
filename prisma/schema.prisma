@@ -17,7 +17,7 @@ model Company {
   businessName          String
   contactPerson         String
   contactPhone          String
-  contactEmail          String
+  contactEmail          String     @unique
   inclusionDate         DateTime   @default(now())
   status                EnumStatus
   municipalRegistration String
