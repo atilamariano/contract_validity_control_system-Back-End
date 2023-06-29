@@ -13,5 +13,6 @@ CREATE TABLE `companies` (
 
     UNIQUE INDEX `companies_code_key`(`code`),
     UNIQUE INDEX `companies_cnpj_key`(`cnpj`),
+    UNIQUE INDEX `companies_cnpj_key`(`contactEmail`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
