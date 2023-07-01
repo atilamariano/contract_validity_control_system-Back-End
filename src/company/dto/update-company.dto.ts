@@ -24,10 +24,18 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example: 'Empresa ABC',
+    example: 'Nome da Empresa ABC',
     description: 'Razão social da empresa',
   })
-  businessName: string;
+  corporateName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    example: 'Empresa ABC',
+    description: 'Nome Fantasia',
+  })
+  fantasyName: string;
 
   @IsString()
   @IsNotEmpty()

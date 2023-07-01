@@ -11,7 +11,8 @@ export class CompanyService {
     const {
       code,
       cnpj,
-      businessName,
+      corporateName,
+      fantasyName,
       contactPerson,
       contactPhone,
       contactEmail,
@@ -23,7 +24,8 @@ export class CompanyService {
       data: {
         code,
         cnpj,
-        businessName,
+        corporateName,
+        fantasyName,
         contactPerson,
         contactPhone,
         contactEmail,
@@ -51,7 +53,8 @@ export class CompanyService {
     const {
       code,
       cnpj,
-      businessName,
+      corporateName,
+      fantasyName,
       contactPerson,
       contactPhone,
       contactEmail,
@@ -66,7 +69,8 @@ export class CompanyService {
       data: {
         code,
         cnpj,
-        businessName,
+        corporateName,
+        fantasyName,
         contactPerson,
         contactPhone,
         contactEmail,

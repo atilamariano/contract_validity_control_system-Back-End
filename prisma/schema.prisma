@@ -12,9 +12,10 @@ datasource db {
 
 model Company {
   id                    Int        @id @default(autoincrement())
-  code                  String     @unique
+  code                  String
   cnpj                  String     @unique
-  businessName          String
+  corporateName         String     @unique
+  fantasyName           String
   contactPerson         String
   contactPhone          String
   contactEmail          String     @unique
