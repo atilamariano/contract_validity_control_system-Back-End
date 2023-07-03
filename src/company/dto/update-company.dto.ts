@@ -6,7 +6,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: '0123',
     description: 'Código que define as atividades exercidas por uma empresa',
@@ -14,7 +13,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   code: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: '00.000.000/0001-00',
     description: 'Cadastro Nacional de Pessoas Jurídicas (CNPJ)',
@@ -22,7 +20,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   cnpj: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: 'Nome da Empresa ABC',
     description: 'Razão social da empresa',
@@ -30,7 +27,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   corporateName: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: 'Empresa ABC',
     description: 'Nome Fantasia',
@@ -38,7 +34,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   fantasyName: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: 'João Silva',
     description: 'Responsável da empresa',
@@ -46,7 +41,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   contactPerson: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: '1234567890',
     description: 'Telefone de contato da empresa',
@@ -54,7 +48,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   contactPhone: string;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: 'joao@empresa.com',
     description: 'E-mail de contato da empresa',
@@ -62,7 +55,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   contactEmail: string;
 
   @IsEnum(EnumStatus)
-  @IsNotEmpty()
   @ApiProperty({
     example: 'ACTIVE',
     description: 'Status da empresa',
@@ -70,7 +62,6 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {
   status: EnumStatus;
 
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({
     example: '123456789',
     description: 'Inscrição municipal da empresa',
