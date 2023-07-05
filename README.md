@@ -1,73 +1,156 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API para cadastro de empresas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma API desenvolvida para o processo seletivo da vaga de Full Stack na empresa Elite Consultores. A API permite o cadastro de empresas por meio de um CRUD (Create, Read, Update, Delete) utilizando as seguintes tecnologias: NestJS, Prisma e PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Como utilizar
 
-## Description
+Para utilizar a API, siga as instruções abaixo:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+#### 1. Clone o repositório:
 
-## Installation
+`git clone https://github.com/atilamariano/eliteConsultores-backEnd`
 
-```bash
-$ npm install
-```
+#### 2. Instale as dependências:
 
-## Running the app
+`npm install`
 
-```bash
-# development
-$ npm run start
+#### 3. Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
 
-# watch mode
-$ npm run start:dev
+`DATABASE_URL=postgresql://username:password@localhost:5432/database_name`
 
-# production mode
-$ npm run start:prod
-```
+Certifique-se de substituir `username`, `password` e `database_name` pelos valores corretos para a sua configuração do PostgreSQL.
 
-## Test
+#### 4. Rode as migrações do banco de dados:
 
-```bash
-# unit tests
-$ npm run test
+`npx prisma migrate dev`
 
-# e2e tests
-$ npm run test:e2e
+#### 5. Inicie o servidor:
 
-# test coverage
-$ npm run test:cov
-```
+`npm run start:dev`
 
-## Support
+Pronto! A API está funcionando e pronta para ser utilizada.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Endpoints
 
-## Stay in touch
+A API possui os seguintes endpoints:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### POST /company
 
-## License
+Cadastra uma nova empresa.
 
-Nest is [MIT licensed](LICENSE).
+#### Parâmetros
+
+Os seguintes parâmetros devem ser enviados no corpo da requisição:
+
+| Nome                | Tipo   | Descrição                     |
+|---------------------|--------|-------------------------------|
+| code                | string | Código da empresa             |
+| cnpj                | string | CNPJ da empresa               |
+| corporateName       | string | Razão social da empresa       |
+| fantasyName         | string | Nome fantasia da empresa      |
+| contactPerson       | string | Nome da pessoa de contato     |
+| contactPhone        | string | Telefone da pessoa de contato |
+| contactEmail        | string | Email da pessoa de contato    |
+| municipalRegistration | string | Registro municipal da empresa |
+
+#### Resposta
+
+A resposta será um objeto JSON contendo os dados da empresa cadastrada.
+
+### GET /company
+
+Retorna a lista de todas as empresas cadastradas.
+
+#### Resposta
+
+A resposta será um array de objetos JSON, onde cada objeto representa uma empresa cadastrada.
+
+### GET /company/:id
+
+Retorna os dados de uma empresa específica.
+
+#### Parâmetros
+
+| Nome | Tipo | Descrição        |
+|------|------|------------------|
+| id   | int  | ID da empresa desejada |
+
+#### Resposta
+
+A resposta será um objeto JSON contendo os dados da empresa.
+
+### PUT /company/:id
+
+Atualiza os dados de uma empresa específica.
+
+#### Parâmetros
+
+| Nome                | Tipo   | Descrição                     |
+|---------------------|--------|-------------------------------|
+| code                | string | Código da empresa             |
+| cnpj                | string | CNPJ da empresa               |
+| corporateName       | string | Razão social da empresa       |
+| fantasyName         | string | Nome fantasia da empresa      |
+| contactPerson       | string | Nome da pessoa de contato     |
+| contactPhone        | string | Telefone da pessoa de contato |
+| contactEmail        | string | Email da pessoa de contato    |
+| municipalRegistration | string | Registro municipal da empresa |
+
+#### Resposta
+
+A resposta será um objeto JSON contendo os dadosAtualizados da empresa.
+
+### DELETE /company/:id
+
+Deleta uma empresa específica.
+
+#### Parâmetros
+
+| Nome | Tipo | Descrição        |
+|------|------|------------------|
+| id   | int  | ID da empresa a ser deletada |
+
+#### Resposta
+
+A resposta será um objeto JSON indicando que a empresa foi deletada com sucesso.
+
+## Documentação com Swagger
+
+A API possui documentação interativa fornecida pelo Swagger. Para acessar a documentação, siga os passos abaixo:
+
+#### 1. Inicie o servidor da API:
+
+`npm run star:dev`
+
+#### 2. Abra o navegador e acesse o seguinte endereço:
+
+`http://localhost:3333/docs`
+
+A documentação do Swagger será exibida, fornecendo informações sobre os endpoints da API, seus parâmetros, respostas e exemplos de uso.
+
+## Tecnologias utilizadas
+
+- TypeScript
+- NestJS
+- Prisma
+- MySql
+
+## Observações
+
+Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Full Stack na empresa Elite Consultores. Ele implementa uma API para cadastro de empresas, utilizando as tecnologias mencionadas acima.
+
+Este projeto é apenas uma implementação de exemplo e não possui recursos avançados, como autenticação de usuários ou validação de dados. Foi desenvolvido com o objetivo de demonstrar conhecimentos básicos em desenvolvimento backend com as tecnologias propostas.
+
+Caso precise de mais informações, fique à vontade para entrar em contato, ficarei feliz em eslarecer qualquer duvida sobre o projeto.
+
+**Autor:**   Átila Mariano.
+**Contato:** atilamariano@hotmail.com
+
+Obrigado por considerar este projeto!
+
+
+
+
+
+
+
