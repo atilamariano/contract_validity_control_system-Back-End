@@ -141,7 +141,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a vaga de Ful
 
 Este projeto é apenas uma implementação de exemplo e não possui recursos avançados, como autenticação de usuários ou validação de dados. Foi desenvolvido com o objetivo de demonstrar conhecimentos básicos em desenvolvimento backend com as tecnologias propostas.
 
-Caso precise de mais informações, fique à vontade para entrar em contato, ficarei feliz em eslarecer qualquer duvida sobre o projeto.
+Caso precise de mais informações, fique à vontade para entrar em contato, ficarei feliz em esclarecer qualquer duvida sobre o projeto.
 
 **Autor:**   Átila Mariano.
 **Contato:** atilamariano@hotmail.com
